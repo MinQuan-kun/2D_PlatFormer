@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 3
   tags:
   - Damage
+  - CarrotText
   layers:
   - Default
   - TransparentFX

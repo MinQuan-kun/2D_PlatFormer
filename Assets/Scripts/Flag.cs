@@ -1,23 +1,36 @@
 using UnityEngine;
-using TMPro;
+using TMPro; // Thư viện TextMeshPro
+
 public class Flag : MonoBehaviour
 {
     public GameObject winUI;
-    public TextMeshProUGUI carrotText;
+    public TextMeshProUGUI finalScoreText;
+    private int totalCarrots;
+
+    void Start()
+    {
+        totalCarrots = FindObjectsOfType<Carrot>().Length;
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.CompareTag("Player"))
         {
-            if (!collision.CompareTag("Player")) return;
-
             Player player = collision.GetComponent<Player>();
-            if (player == null) return;
+            
+            if (player != null)
+            {
+                if (winUI != null)
+                    winUI.SetActive(true);
 
-            if (winUI != null)
-                winUI.SetActive(true);
-            if (carrotText != null)
-                carrotText.text = "Carrots: " + player.carrots;
-            Time.timeScale = 0f;
+                if (finalScoreText != null)
+                {
+                    finalScoreText.text = player.carrots.ToString() + " / " + totalCarrots.ToString();
+                }
+
+                // 3. Dừng game
+                Time.timeScale = 0f;
+            }
         }
     }
 }

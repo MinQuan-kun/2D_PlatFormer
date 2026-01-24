@@ -41,9 +41,12 @@ public partial class MovingPlatForm : MonoBehaviour
         }
     }
     private void OnCollisionExit2D(Collision2D collision) {
-        if(collision.gameObject.tag == "Player")
+        if (collision.gameObject.CompareTag("Player"))
         {
-            collision.transform.SetParent(null);
+            if (gameObject.activeInHierarchy)
+            {
+                collision.transform.SetParent(null);
+            }
         }
     }
 }
