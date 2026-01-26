@@ -110,6 +110,12 @@ public class Player : MonoBehaviour
                 Die();
             }
         }
+        else if (collision.gameObject.tag == "BouncePad")
+        {
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce * 1.5f);
+            PlaySFX(jumpClip);
+        }
+
     }
     private IEnumerator BlinkRed()
     {
@@ -138,5 +144,19 @@ public class Player : MonoBehaviour
         audioSource.clip = audioClip;
         audioSource.volume = volume;
         audioSource.Play();
+    }
+    
+    private void OnTriggerEnter2D(Collider2D collision) {
+        if(collision.gameObject.tag == "Poision")
+        {
+            extraJump = 2;
+            Destroy(collision.gameObject);
+        }
+        else if(collision.gameObject.tag == "Heart")
+        {
+            heart = Mathf.Min(heart + 1, hearts.Length);
+            UpdateHeartsUI();
+            Destroy(collision.gameObject);
+        }
     }
 }

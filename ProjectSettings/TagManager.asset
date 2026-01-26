@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Damage
   - CarrotText
+  - BouncePad
+  - Poision
+  - Collection
   layers:
   - Default
   - TransparentFX

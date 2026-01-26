@@ -4153,7 +4153,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0adfeefcb61f9d479918f277523e304, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NextLevel
-  nextLevelName: Level2
+  nextLevelName: Level3
+  nextLevelValue: 3
 --- !u!114 &1328991729
 MonoBehaviour:
   m_ObjectHideFlags: 0
