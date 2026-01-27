@@ -9,6 +9,7 @@ TagManager:
   - BouncePad
   - Poision
   - Collection
+  - Heart
   layers:
   - Default
   - TransparentFX
