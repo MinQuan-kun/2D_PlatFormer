@@ -1,16 +1,31 @@
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.UI; // Cần thư viện này để chỉnh nút
+using UnityEngine.SceneManagement;
+
 public class LevelButton : MonoBehaviour
 {
-    public int level;
+    public int levelReq;
+    public string levelName;
+    private Button myButton;
+
     void Start()
     {
-        Button btn = GetComponent<Button>();
-        if(PlayerPrefs.GetInt("LevelReached") < level)
+        myButton = GetComponent<Button>();
+        int levelReached = PlayerPrefs.GetInt("LevelReached", 1);
+
+        if (levelReq > levelReached)
         {
-            btn.interactable = false;
+            myButton.interactable = false;
+        }
+        else
+        {
+            myButton.interactable = true; 
         }
     }
 
-
+    public void LoadLevel()
+    {
+        SceneManager.LoadScene(levelName);
+        Time.timeScale = 1f; 
+    }
 }

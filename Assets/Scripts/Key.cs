@@ -7,6 +7,13 @@ public class Key : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             Door.hasKey = true; 
+            
+            Door door = FindFirstObjectByType<Door>(); 
+            if (door != null)
+            {
+                door.OpenDoor();
+            }
+
             Debug.Log("Đã nhặt chìa khóa!");
             Destroy(gameObject);
         }

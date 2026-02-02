@@ -4,10 +4,18 @@ using UnityEngine.SceneManagement;
 public class NextLevel : MonoBehaviour
 {
     public string nextLevelName;
-    public int nextLevelValue;
+    public int nextLevelValue; 
+
     public void LoadNextScene()
     {
-        PlayerPrefs.SetInt("LevelReached", nextLevelValue);
+        int currentLevelReached = PlayerPrefs.GetInt("LevelReached", 1);
+        
+        if (nextLevelValue > currentLevelReached)
+        {
+            PlayerPrefs.SetInt("LevelReached", nextLevelValue);
+            PlayerPrefs.Save();
+        }
+
         SceneManager.LoadScene(nextLevelName);
         Time.timeScale = 1f;
     }
